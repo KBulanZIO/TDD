@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class Zad1 {
 
     private static final int SIZE = 3;
-    static char[][] answers = {
+    char[][] answers = {
             {'\0','\0','\0'},
             {'\0','\0','\0'},
             {'\0','\0','\0'}
@@ -26,6 +28,8 @@ public class Zad1 {
         checkAxis(y);
         lastPlayer = nextPlayer();
         setBox(x,y,lastPlayer);
+        if (isDraw() == "Wynik remisowy")
+            return isDraw();
         return isWin();
     }
 
@@ -47,6 +51,16 @@ public class Zad1 {
         if (answers[2][2] == lastPlayer &&  answers[1][1] == lastPlayer && answers[0][0] == lastPlayer)
             return "Wygral " + lastPlayer;
         return "Brak zwyciezcy";
+    }
+
+    public String isDraw() {
+        for (int i=0; i<SIZE; i++) {
+            for (int j=0; j<SIZE;j++) {
+                if (answers[i][j] != 'X' && answers[i][j] != 'O')
+                    return "Brak zwyciezcy";
+            }
+        }
+        return "Wynik remisowy";
     }
 
     public char nextPlayer() {

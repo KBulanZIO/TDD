@@ -17,16 +17,19 @@ public class Zad1Spec {
     // Wymaganie 1
     @Test
     public void whenXOutsideBoardThenRuntimeException(){
+        zad1=new Zad1();
         exception.expect(RuntimeException.class);
         zad1.play(5,2);
     }
     @Test
     public void whenYOutsideBoardThenRuntimeException(){
+        zad1=new Zad1();
         exception.expect(RuntimeException.class);
         zad1.play(2,5);
     }
     @Test
     public void whenOccupiedThenRuntimeException(){
+        zad1=new Zad1();
         zad1.play(2,1);
         exception.expect(RuntimeException.class);
         zad1.play(2,1);
@@ -35,11 +38,13 @@ public class Zad1Spec {
     // Wymaganie 2
     @Test
     public void givenFirstTurnWhenNextPlayerThenX(){
+        zad1=new Zad1();
         assertEquals('X',zad1.nextPlayer());
     }
 
     @Test
     public void givenLastTurnWasXWhenNextPlayerThenO() {
+        zad1=new Zad1();
         // Zaczynamy - stawiamy  X
         zad1.play(2,1);
         // Nastepny gracz - O
@@ -103,5 +108,19 @@ public class Zad1Spec {
         assertEquals("Wygral X", actual);
     }
 
+    // Wymaganie 4
+    @Test
+    public void whenAllBoxesAreFilledThenDraw() {
+        zad1.play(2, 2);//X
+        zad1.play(1, 2);//O
+        zad1.play(3, 2);//X
+        zad1.play(3, 3);//O
+        zad1.play(2, 3);//X
+        zad1.play(1, 3);//O
+        zad1.play(1, 1);//X
+        zad1.play(2, 1);//O
+        String actual = zad1.play(3, 1);//X
+        assertEquals("Wynik remisowy", actual);
+    }
 
 }
