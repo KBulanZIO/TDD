@@ -9,7 +9,7 @@ public class Zad1 {
             {'\0','\0','\0'}
     };
 
-    static char lastPlayer = '\0';
+    char lastPlayer = '\0';
 
     private void checkAxis(int param) {
         if (param < 1 || param > 3)
