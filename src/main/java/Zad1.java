@@ -1,5 +1,6 @@
 public class Zad1 {
 
+    private static final int SIZE = 3;
     static char[][] answers = {
             {'\0','\0','\0'},
             {'\0','\0','\0'},
@@ -25,10 +26,26 @@ public class Zad1 {
         checkAxis(y);
         lastPlayer = nextPlayer();
         setBox(x,y,lastPlayer);
-        for (int i=0; i<3; i++) {
+        return isWin();
+    }
+
+    public String isWin() {
+        // Wygrana w wierszu
+        for (int i=0; i<SIZE; i++) {
             if (answers[0][i] == lastPlayer &&  answers[1][i] == lastPlayer && answers[2][i] == lastPlayer)
                 return "Wygral " + lastPlayer;
         }
+        // Wygrana w kolumnie
+        for (int i=0; i<SIZE; i++) {
+            if (answers[i][0] == lastPlayer &&  answers[i][1] == lastPlayer && answers[i][2] == lastPlayer)
+                return "Wygral " + lastPlayer;
+        }
+        // 1 przekatna
+        if (answers[0][2] == lastPlayer &&  answers[1][1] == lastPlayer && answers[2][0] == lastPlayer)
+            return "Wygral " + lastPlayer;
+        // 2 przekatna
+        if (answers[2][2] == lastPlayer &&  answers[1][1] == lastPlayer && answers[0][0] == lastPlayer)
+            return "Wygral " + lastPlayer;
         return "Brak zwyciezcy";
     }
 

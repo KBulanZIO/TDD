@@ -70,5 +70,38 @@ public class Zad1Spec {
         zad1.play(2, 1);//X
         zad1.play(2, 2);//O
         String actual = zad1.play(3, 1);//X
-        assertEquals("Wygral X", actual);}
+        assertEquals("Wygral X", actual);
+    }
+
+    @Test
+    public void whenPlayAndWholeVerticalLineThenWinner() {
+        zad1.play(1, 1);//X
+        zad1.play(2, 2);//0
+        zad1.play(1, 2);//X
+        zad1.play(2, 3);//O
+        String actual = zad1.play(1, 3);//X
+        assertEquals("Wygral X", actual);
+    }
+
+    @Test
+    public void whenPlayAndTopBottomDiagonalLineThenWinner() {
+        zad1.play(1, 3);//X
+        zad1.play(1, 2);//O
+        zad1.play(2, 2);//X
+        zad1.play(3, 2);//O
+        String actual = zad1.play(3, 1);//X
+        assertEquals("Wygral X", actual);
+    }
+
+    @Test
+    public void whenPlayAndBottomTopDiagonalLineThenWinner() {
+        zad1.play(3, 3);//X
+        zad1.play(1, 2);//O
+        zad1.play(2, 2);//X
+        zad1.play(3, 2);//O
+        String actual = zad1.play(1, 1);//X
+        assertEquals("Wygral X", actual);
+    }
+
+
 }
